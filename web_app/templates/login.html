@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Log in</title>
+    <link rel="stylesheet" href="static/login.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Log in</h2>
+        
+        <form id="loginForm" method="POST">
+            <div id="errorMessage" class="error" {% if error %}style="display: block;"{% else %}style="display: none;"{% endif %}>
+                {% if error %}{{ error }}{% endif %}
+            </div>
+            
+            <div class="form-group">
+                <label for="login">Login</label>
+                <input type="text" id="login" name="login" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            
+            <button type="submit">Log in</button>
+            
+            <div class="links">
+                <a href="/signup">Need an account? Sign up</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

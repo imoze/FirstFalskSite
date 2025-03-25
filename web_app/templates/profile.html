@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="static/profile.css">
+</head>
+<body>
+    <div class="profile-container">
+        <h2>My Profile</h2>
+        
+        <div class="profile-info">
+            <div class="profile-field">
+                <span class="field-label">First Name:</span>
+                <span class="field-value">{{ first_name }}</span>
+            </div>
+            
+            <div class="profile-field">
+                <span class="field-label">Last Name:</span>
+                <span class="field-value">{{ last_name }}</span>
+            </div>
+            
+            <div class="profile-field">
+                <span class="field-label">Date of Birth:</span>
+                <span class="field-value">{{ birth_date }}</span>
+            </div>
+            
+            <div class="profile-field">
+                <span class="field-label">Phone:</span>
+                <span class="field-value">{{ phone }}</span>
+            </div>
+
+            <div class="profile-field">
+                <span class="field-label">Email:</span>
+                <span class="field-value">{{ email }}</span>
+            </div>
+            
+            <div class="profile-field">
+                <span class="field-label">Personal Discount:</span>
+                <span class="field-value">{{ personal_discount }}%</span>
+            </div>
+            
+            <div class="profile-field">
+                <span class="field-label">Delivery Address:</span>
+                <span class="field-value">{{ delivery_adress }}</span>
+            </div>
+        </div>
+        
+        <form method="post">
+            <div class="profile-actions">
+                <button name="edit-btn" class="edit-btn" value="edit">Edit Profile</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
