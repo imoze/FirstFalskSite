@@ -29,15 +29,20 @@
                 <label for="email" class="field-label">Email:</label>
                 <input type="email" id="email" name="email" value="{{ user.Email}}" class="profile-input" required>
             </div>
-            
+
+            <div>
+                <label for="phone" class="field-label">Phone:</label>
+                <input type="tel" id="phone" name="phone" value="{{ user.Phone}}" class="profile-input" required>
+            </div>
+
             <div class="profile-field">
                 <label for="address" class="field-label">Delivery Address:</label>
                 <textarea id="address" name="address" class="profile-textarea" required>{{ user.DeliveryAdress }}</textarea>
             </div>
             
             <div class="profile-actions">
-                <button type="submit" class="save-btn">Save Changes</button>
-                <button type="button" class="cancel-btn">Cancel</button>
+                <button type="submit" name="action" value="save" class="save-btn">Save Changes</button>
+                <button type="submit" name="action" value="cancel" class="cancel-btn">Cancel</button>
             </div>
         </form>
     </div>

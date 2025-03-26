@@ -34,13 +34,25 @@ def getClientData(user):
     clientData = cursor.fetchone()
     cursor.close()
     clientData = {
-        'Firstname': clientData[0],
-        'Lastname': clientData[1],
-        'BirthDate': clientData[2].strftime("%Y-%m-%d"),
-        'Phone': clientData[3],
-        'Email': clientData[4],
-        'PersonalDiscount': clientData[5],
-        'DeliveryAdress': clientData[6]
+        'Firstname': clientData[0] if clientData else '',
+        'Lastname': clientData[1] if clientData else '',
+        'BirthDate': clientData[2].strftime("%Y-%m-%d") if clientData else '',
+        'Phone': clientData[3] if clientData else '',
+        'Email': clientData[4] if clientData else '',
+        'PersonalDiscount': clientData[5] if clientData else '',
+        'DeliveryAdress': clientData[6] if clientData else ''
     }
     connection.close()
     return clientData
+
+
+def setClientData(dataPull):
+    connection = pg.connect(user="postgres", password=DB_PASS, host="127.0.0.1", port="5432", database='injection')
+    cursor = connection.cursor()
+
+    cursor.callproc('setClientData', (*dataPull,))
+    res = cursor.fetchone()
+    connection.commit()
+    cursor.close()
+    connection.close()
+    return res

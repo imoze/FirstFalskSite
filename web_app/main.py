@@ -1,12 +1,20 @@
 from flask import Flask, render_template, redirect, request, url_for
 
-from db_handlers import db_login, db_register, getClientData
+from db_handlers import db_login, db_register, getClientData, setClientData
 
 app = Flask(__name__)
+
 
 @app.route('/')
 def index():
     return redirect('/login')
+
+
+
+@app.route('/mainpage')
+def mainpage():
+    return "main page"
+
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -34,6 +42,7 @@ def signup():
     else:
         return render_template('signup.html')
 
+
 @app.route('/profile', methods=['GET', 'POST'])
 def profile():
     if request.method == 'POST':
@@ -48,10 +57,18 @@ def profile():
 @app.route('/profile-edit', methods=['GET', 'POST'])
 def profileEdit():
     if request.method == 'POST':
-        return "POST"
+        if request.form['action'] == 'cancel':
+            return redirect(url_for('profile', user=request.args.get('user')))
+        else:
+            newData = (request.args.get('user'), request.form['firstName'], request.form['lastName'], request.form['birthDate'],
+                       request.form['phone'], request.form['email'], request.form['address'])
+            setClientData(newData)
+            return redirect(url_for('profile', user=request.args.get('user')))
     else:
         cl_data = getClientData(request.args.get('user'))
         return render_template('profile_edit.html', user=cl_data)
+
+
 
 if __name__ == '__main__':
   app.run(debug=True)
