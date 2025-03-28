@@ -41,6 +41,51 @@ def models():
         return render_template('models.html')
 
 
+@app.route('/models/SF90',  methods=['GET', 'POST'])
+def sf90():
+    if request.method == 'POST':
+        return redirect(url_for('buy', model='sf90'))
+    else:
+        return render_template('sf90.html')
+
+@app.route('/models/Roma',  methods=['GET', 'POST'])
+def roma():
+    if request.method == 'POST':
+        return redirect(url_for('buy', model='roma'))
+    else:
+        return render_template('roma.html')
+
+@app.route('/models/296',  methods=['GET', 'POST'])
+def f296():
+    if request.method == 'POST':
+        return redirect(url_for('buy', model='296'))
+    else:
+        return render_template('296.html')
+
+@app.route('/models/Daytona SP3',  methods=['GET', 'POST'])
+def daytona():
+    if request.method == 'POST':
+        return redirect(url_for('buy', model='daytonasp3'))
+    else:
+        return render_template('daytonasp3.html')
+
+@app.route('/models/12Cilindri',  methods=['GET', 'POST'])
+def cilindri():
+    if request.method == 'POST':
+        return redirect(url_for('buy', model='12cilindri'))
+    else:
+        return render_template('12cilindri.html')
+    
+
+
+@app.route('/buy',  methods=['GET', 'POST'])
+def buy():
+    if request.method == 'POST':
+        return "Succesfull buy"
+    else:
+        return render_template('buy.html')
+
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
