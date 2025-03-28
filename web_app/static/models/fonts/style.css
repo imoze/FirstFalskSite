@@ -1,0 +1,10 @@
+@font-face {
+   font-family: 'Ferrari-SansMedium';
+   font-display: swap;
+   src: url('Ferrari-SansMedium/font.ttf');
+}
+@font-face {
+   font-family: 'Ferrari-SansRegularItalic';
+   font-display: swap;
+   src: url('Ferrari-SansRegularItalic/font.ttf');
+}

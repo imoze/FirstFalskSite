@@ -22,6 +22,23 @@ def mainpage():
         return redirect('models')
     else:
         return render_template('main.html')
+    
+
+@app.route('/models', methods=['GET', 'POST'])
+def models():
+    if request.method == 'POST':
+        if request.form['model'] == 'SF90':
+            return redirect('models/SF90')
+        elif request.form['model'] == 'Roma':
+            return redirect('models/Roma')
+        elif request.form['model'] == '296':
+            return redirect('models/296')
+        elif request.form['model'] == 'Daytona SP3':
+            return redirect('models/Daytona SP3')
+        elif request.form['model'] == '12Cilindri':
+            return redirect('models/12Cilindri')
+    else:
+        return render_template('models.html')
 
 
 
