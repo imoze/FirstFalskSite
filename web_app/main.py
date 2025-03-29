@@ -1,4 +1,5 @@
 import os
+from datetime import datetime
 
 from flask import Flask, render_template, redirect, request, url_for
 
@@ -44,14 +45,14 @@ def models():
 @app.route('/models/SF90',  methods=['GET', 'POST'])
 def sf90():
     if request.method == 'POST':
-        return redirect(url_for('buy', model='sf90'))
+        return redirect(url_for('buy', model='SF 90 Stradale XX'))
     else:
         return render_template('sf90.html')
 
 @app.route('/models/Roma',  methods=['GET', 'POST'])
 def roma():
     if request.method == 'POST':
-        return redirect(url_for('buy', model='roma'))
+        return redirect(url_for('buy', model='Roma'))
     else:
         return render_template('roma.html')
 
@@ -65,14 +66,14 @@ def f296():
 @app.route('/models/Daytona SP3',  methods=['GET', 'POST'])
 def daytona():
     if request.method == 'POST':
-        return redirect(url_for('buy', model='daytonasp3'))
+        return redirect(url_for('buy', model='Daytona SP3'))
     else:
         return render_template('daytonasp3.html')
 
 @app.route('/models/12Cilindri',  methods=['GET', 'POST'])
 def cilindri():
     if request.method == 'POST':
-        return redirect(url_for('buy', model='12cilindri'))
+        return redirect(url_for('buy', model='12Cilindri'))
     else:
         return render_template('12cilindri.html')
     
@@ -81,9 +82,13 @@ def cilindri():
 @app.route('/buy',  methods=['GET', 'POST'])
 def buy():
     if request.method == 'POST':
-        return "Succesfull buy"
+        print(f"Now: {datetime.now()} date:{datetime.strptime(request.form['delivery-date'], '%Y-%m-%d')}")
+        if datetime.now() < datetime.strptime(request.form['delivery-date'], '%Y-%m-%d'):
+            return "Succesfull buy"
+        else:
+            return render_template('buy.html', model=request.args['model'], error='Incorrect date')
     else:
-        return render_template('buy.html')
+        return render_template('buy.html', model=request.args['model'])
 
 
 
