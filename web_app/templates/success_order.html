@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Confirmed - {{ model }}</title>
+    <link rel="stylesheet" href="/static/header.css">
+    <link rel="stylesheet" href="/static/success.css">
+</head>
+<body>
+    {% include 'header.html' %}
+
+    <div class="success-page">
+        <form class="success-content" method="POST">
+            <div class="success-icon">✓</div>
+            <h1 class="success-title">Order Successfully Placed!</h1>
+            
+            <div class="order-summary">
+                <div class="summary-item">
+                    <span class="summary-label">Model:</span>
+                    <span class="summary-value">{{ model }}</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">Quantity:</span>
+                    <span class="summary-value">{{ quantity }}</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">Delivery Date:</span>
+                    <span class="summary-value">{{ delivery_date }}</span>
+                </div>
+                <div class="summary-item total">
+                    <span class="summary-label">Total Amount:</span>
+                    <span class="summary-value">₽{{ total_amount }}</span>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button name="action" value="main" class="action-btn home-btn">Main page</button>
+                <button name="action" value="hist" class="action-btn history-btn">Order History</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

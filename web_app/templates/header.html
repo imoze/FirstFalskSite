@@ -1,0 +1,26 @@
+<header class="site-header">
+    <div class="header-container">
+        <!-- Логотип слева -->
+        <div class="header-logo">
+            <a href="/">
+                <img src="/static/logo.png" alt="CarShop Logo" class="logo-img">
+            </a>
+        </div>
+        
+        <!-- Название компании по центру -->
+        <div class="header-title">
+            <h1>Ferrari Moscow</h1>
+        </div>
+        
+        <!-- Кнопка авторизации/профиля справа -->
+        <div class="header-auth">
+            {% if login and password%}
+                <a href="{{ url_for('profile', login=login, password=password) }}" class="auth-btn profile-btn">
+                    <span class="username">Profile</span>
+                </a>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="auth-btn login-btn">Sign In</a>
+            {% endif %}
+        </div>
+    </div>
+</header>

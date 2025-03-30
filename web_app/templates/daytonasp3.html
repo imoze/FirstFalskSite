@@ -5,6 +5,7 @@
   
   
   <title>Home</title>
+  <link rel="stylesheet" href="/static/header.css">
   <link rel="stylesheet" href="/static/daytonasp3/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="/static/daytonasp3/bootstrap/css/bootstrap-grid.min.css">
   <link rel="stylesheet" href="/static/daytonasp3/bootstrap/css/bootstrap-reboot.min.css">
@@ -20,6 +21,7 @@
   
 </head>
 <body>
+  {% include 'header.html' %}
   
   <section data-bs-version="5.1" class="header16 cid-uGGsDdPsZL mbr-fullscreen mbr-parallax-background" id="header17-0">
   
@@ -62,7 +64,10 @@
         
         <p class="mbr-fonts-style mbr-text mbr-white mb-4 display-5">The Daytona SP3 is a rolling masterpiece, a tribute to Ferrari’s most iconic racers, reimagined for the modern connoisseur. With its naturally aspirated V12 and breathtaking silhouette, it is a rare jewel—mechanical art reserved for those who seek the extraordinary.</p>
         <form class="parent-container" method="POST">
-          <button class="mbr-section-btn"><a class="btn btn-success-outline display-7">Buy</a></button>
+          <button class="mbr-section-btn" {% if not login %}disabled{% endif %}><a class="btn btn-success-outline display-7">Buy</a></button>
+          {% if not login %}
+          <p class="text-warning mt-2">You need <a href="{{ url_for('login') }}" class="text-warning"><u>authorisation</u></a> to place order</p>
+          {% endif %}
         </form>
       </div>
     </div>

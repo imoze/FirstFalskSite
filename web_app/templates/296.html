@@ -5,6 +5,7 @@
   
   
   <title>296</title>
+  <link rel="stylesheet" href="/static/header.css">
   <link rel="stylesheet" href="/static/296/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="/static/296/bootstrap/css/bootstrap-grid.min.css">
   <link rel="stylesheet" href="/static/296/bootstrap/css/bootstrap-reboot.min.css">
@@ -20,6 +21,7 @@
   
 </head>
 <body>
+  {% include 'header.html' %}
   
   <section data-bs-version="5.1" class="header16 cid-uGGsDdPsZL mbr-fullscreen mbr-parallax-background" id="header17-0">
   
@@ -62,7 +64,10 @@
         
         <p class="mbr-fonts-style mbr-text mbr-white mb-4 display-5">Born from the racetrack, perfected for the open road, the 296 GTB is a marvel of precision. Its hybrid V6 heart delivers razor-sharp responsiveness, while its aerodynamic silhouette slices through air with balletic poise. This is not merely a car—it is a statement of intent.</p>
         <form class="parent-container" method="POST">
-          <button class="mbr-section-btn"><a class="btn btn-success-outline display-7">Buy</a></button>
+          <button class="mbr-section-btn" {% if not login %}disabled{% endif %}><a class="btn btn-success-outline display-7">Buy</a></button>
+          {% if not login %}
+          <p class="text-warning mt-2">You need <a href="{{ url_for('login') }}" class="text-warning"><u>authorisation</u></a> to place order</p>
+          {% endif %}
         </form>
       </div>
     </div>
